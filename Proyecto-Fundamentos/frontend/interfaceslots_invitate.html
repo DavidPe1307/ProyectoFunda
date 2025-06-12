@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Estado de slots | invitado | UTA</title>
+	<link rel="stylesheet" href="../css/stylesinterfaceslot.css">
+</head>
+<body>
+	<nav>
+		<ul class="menu-horizontal">
+			<li><a href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                        <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
+                        </svg> Cuenta</a>
+                    <ul class="menu-vertical">
+					    <li><a href="../frontend/login.html">Iniciar sesión</a></li>
+					</ul>
+            </li>
+			<li>
+				<a href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-p-square" viewBox="0 0 16 16">
+                    <path d="M5.5 4.002h2.962C10.045 4.002 11 5.104 11 6.586c0 1.494-.967 2.578-2.55 2.578H6.784V12H5.5zm2.77 4.072c.893 0 1.419-.545 1.419-1.488s-.526-1.482-1.42-1.482H6.778v2.97z"/>
+                    <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"/>
+                    </svg>
+                    Slots
+                </a>
+				<ul class="menu-vertical">
+					<li><a href="../frontend/interfaceslots_invitate.html">Visualizar slots</a></li>
+				</ul>
+			</li>
+			
+
+		</ul>
+	</nav>
+	</nav>
+</head>
+<body>
+    <header>
+        <h1>Sistema de Control de Estacionamiento</h1>
+        <p>Invitado</p>
+    </header>
+    
+    <div class="container">
+        <div class="dashboard">
+            <div class="stats">
+                <h3>Total</h3>
+                <div class="value total" id="total-spaces">10</div>
+            </div>
+            <div class="stats">
+                <h3>Ocupados</h3>
+                <div class="value ocupados" id="occupied-spaces">0</div>
+            </div>
+            <div class="stats">
+                <h3>Disponibles</h3>
+                <div class="value disponibles" id="available-spaces">10</div>
+            </div>
+        </div>
+        
+        <div class="parking-layout">
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: var(--color-success);"></div>
+                    <span>Disponible</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: var(--color-danger);"></div>
+                    <span>Ocupado</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: var(--color-warning);"></div>
+                    <span>Reservado</span>
+                </div>
+            </div>
+            
+            <div class="floor">
+                <h2>Espacios de estacionamiento</h2>
+                
+           
+                <div class="row">
+                    <div class="spot available" data-id="A1">A1</div>
+                    
+                    <div class="spot available" data-id="B1">B1</div>
+                </div>  
+                <div class="row">
+                    <div class="spot available" data-id="A2">A2</div>                    
+                    <div class="spot available" data-id="B2">A2</div>                    
+                </div>
+                <div class="row">
+                    <div class="spot available" data-id="A3">A3</div>                    
+                    <div class="spot available" data-id="B3">B3</div>                    
+                </div>
+                <div class="row">
+                    <div class="spot available" data-id="A4">A4</div>                    
+                    <div class="spot available" data-id="B4">B4</div>                    
+                </div>
+                <div class="row">
+                    <div class="spot available" data-id="A5">A5</div>                    
+                    <div class="spot available" data-id="B5">B5</div>                    
+                </div>
+            </div>
+            
+            
+        </div>
+        
+        <div class="controls">
+            <h2>Control de Estacionamiento</h2>
+            <div class="form-group">
+                <label for="spot-select">Seleccionar lugar:</label>
+                <select id="spot-select">
+                    <option value="">-- No permitido --</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="status-select">Estado:</label>
+                <select id="status-select">
+                    <option value="available">Disponible</option>
+                    <option value="occupied">Ocupado</option>
+                    <option value="reserved">Reservado</option>
+                </select>
+            </div>
+            <button id="update-btn">Actualizar Estado</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const spots = document.querySelectorAll('.spot');
+            const spotSelect = document.getElementById('spot-select');
+            const statusSelect = document.getElementById('status-select');
+            const updateBtn = document.getElementById('update-btn');
+            const totalSpaces = document.getElementById('total-spaces');
+            const occupiedSpaces = document.getElementById('occupied-spaces');
+            const availableSpaces = document.getElementById('available-spaces');
+            
+            // Inicializar contadores
+            function updateCounters() {
+                const total = spots.length;
+                const occupied = document.querySelectorAll('.spot.occupied').length;
+                const reserved = document.querySelectorAll('.spot.reserved').length;
+                const available = total - occupied - reserved;
+                
+                totalSpaces.textContent = total;
+                occupiedSpaces.textContent = occupied + reserved;
+                availableSpaces.textContent = available;
+            }
+            
+            // Actualizar estado desde el control
+            updateBtn.addEventListener('click', function() {
+                               
+                    alert('Por favor inicie sesión');
+                
+            });
+            
+            // Permitir clic en lugares para cambiar estado
+            spots.forEach(spot => {
+                spot.addEventListener('click', function() {
+                    window.location.href = 'login.html';
+                    alert('Por favor inicie sesión');
+                })});
+                    
+                    // Actualizar el selector
+                    spotSelect.value = this.dataset.id;
+                    
+                    // Actualizar el select de estado
+                    if (this.classList.contains('available')) {
+                        statusSelect.value = 'available';
+                    } else if (this.classList.contains('occupied')) {
+                        statusSelect.value = 'occupied';
+                    } else {
+                        statusSelect.value = 'reserved';
+                    }
+                });
+        
+            
+            // Inicializar contadores
+            updateCounters();
+        
+    </script>
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('active');
+        }
+
+        // Cerrar menú al hacer clic fuera de él
+        document.addEventListener('click', function(event) {
+            const menu = document.getElementById('menu');
+            const menuToggle = document.querySelector('.menu-toggle');
+            
+            if (!menu.contains(event.target) && !menuToggle.contains(event.target)) {
+                menu.classList.remove('active');
+            }
+        });
+
+        // Cerrar menú al redimensionar la ventana
+        window.addEventListener('resize', function() {
+            const menu = document.getElementById('menu');
+            if (window.innerWidth > 768) {
+                menu.classList.remove('active');
+            }
+        });
+    </script>
+                
+            </div>
+
+   
+</body>
+</html>
