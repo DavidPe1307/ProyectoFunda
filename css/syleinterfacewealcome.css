@@ -1,0 +1,107 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Open Sans';
+}
+body{
+	background-image: url(/img/fondo.jpg);
+	background-size: cover;
+}
+nav{
+	max-width: 900px;
+	margin: auto;
+	background-color: #333;
+	font-size: 20px;
+	margin-top: 70px;
+	border-radius: 25px;
+}
+.menu-horizontal{
+	list-style: none;
+	display: flex;
+	justify-content: space-around;
+}
+.menu-horizontal > li > a{
+	display: block;
+	padding: 20px 25px;
+	color: white;
+	text-decoration: none;
+}
+.menu-horizontal > li:hover{
+	background-color: #881616;
+	border-radius: 25px;
+	transition: all 0.3s ease;
+}
+.menu-vertical{
+	position: absolute;
+	display: none;
+	list-style: none;
+	width: 200px;
+	background-color: rgba(0, 0, 0, .5);
+	border-radius: 25px;
+	transition: all 0.3s ease;
+}
+.menu-horizontal li:hover .menu-vertical{
+	display: block;
+	transition: all 0.3s ease;
+}
+.menu-vertical li:hover{
+	background-color: black;
+	border-radius: 25px;
+	transition: all 0.3s ease;
+}
+
+.menu-vertical li a{
+	display: block;
+	color: white;
+	text-decoration: none;
+	padding: 15px 15px 15px 20px;
+}
+
+
+
+.head {
+	position: absolute;
+    width: 100%;
+    margin-left: 100px;
+	margin-top: 325px;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 500px;
+
+}
+
+.head h2 {
+    font-size: 3rem;
+    top: 5px;
+	right: 3px;
+}
+
+
+
+.imag .logo{
+
+    position: absolute;
+    height: 500px;
+    width: 400px;
+    bottom: 0;
+    right: 15%;
+    top: 27%;
+    z-index: 9;
+}
+
+.imag .line{
+    position: absolute;
+    height: 600px;
+    width: 700px;
+    right:10%;
+    top: 28%;
+    z-index: 8;
+
+}
+

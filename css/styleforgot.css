@@ -1,0 +1,153 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f3f3f3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.form-container {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+input[type="email"] {
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.password-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.password-input {
+    padding: 10px 45px 10px 10px; /* Padding derecho aumentado para el botón */
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.password-input:focus {
+    border-color: #770303;
+    box-shadow: 0 0 0 2px rgba(119, 3, 3, 0.2);
+}
+
+.password-toggle {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    color: #666;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+}
+
+.password-toggle:hover {
+    background-color: rgba(119, 3, 3, 0.1);
+    color: #770303;
+}
+
+.password-toggle:focus {
+    outline: 2px solid #770303;
+    outline-offset: 2px;
+}
+
+.eye-icon {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+    transition: fill 0.2s ease;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #770303;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #660000;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+#mensaje {
+    margin-top: 10px;
+    color: rgba(128, 11, 0, 0.847);
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: rgba(128, 11, 0, 0.1);
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .form-container {
+        padding: 20px;
+        margin: 20px;
+    }
+    
+    .password-toggle {
+        right: 10px;
+        width: 28px;
+        height: 28px;
+    }
+    
+    .eye-icon {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-container {
+        padding: 15px;
+    }
+    
+    .password-input {
+        padding: 8px 40px 8px 8px;
+    }
+    
+    .password-toggle {
+        right: 8px;
+        width: 26px;
+        height: 26px;
+    }
+    
+    .eye-icon {
+        width: 14px;
+        height: 14px;
+    }
+}
