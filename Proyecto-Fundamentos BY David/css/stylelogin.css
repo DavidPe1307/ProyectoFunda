@@ -1,0 +1,628 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: #f6f5f7;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    background: white;
+    background-size: cover;
+    background-position: center;
+}
+
+h1 {
+    font-weight: bold;
+    margin: 5px 0 8px 0; /* Margen controlado */
+    font-size: clamp(1.5rem, 4vw, 2rem);
+}
+
+p {
+    font-size: clamp(12px, 2.5vw, 14px);
+    font-weight: 100;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+    margin: 5px 0 10px 0; /* Reducido para mejor espaciado */
+}
+
+span {
+    font-size: 12px;
+}
+
+a {
+    color: #228be6;
+    font-size: clamp(12px, 2.5vw, 14px);
+    text-decoration: none;
+    margin: 15px 0;
+}
+
+#red {
+    color: red;
+}
+
+.container {
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 768px;
+    min-height: 500px;
+    background: #fff;
+}
+
+.form-container {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transition: all 0.6s ease-in-out;
+    width: 50%;
+}
+
+.form-container form {
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 30px; /* Reducido padding superior */
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    max-height: none; /* Eliminar restricción de altura */
+    overflow: visible; /* Permitir contenido visible */
+}
+
+/* ESTILOS CORREGIDOS PARA EL LOGO */
+.social-container {
+    margin: 5px 0 15px 0; /* Espaciado reducido y controlado */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px; /* Altura más pequeña */
+    width: 100%;
+}
+
+.login-icon {
+    width: 70px; /* Tamaño más pequeño */
+    height: 70px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+
+.password-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    margin: 6px 0; /* Mismo margen que otros inputs */
+}
+
+.password-input {
+    background: #eee;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 45px 12px 15px; /* Padding derecho aumentado para el botón */
+    width: 100%;
+    font-size: clamp(12px, 2.5vw, 14px);
+    outline: none;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.password-input:focus {
+    background: #e0e0e0;
+    box-shadow: 0 0 0 2px rgba(116, 2, 2, 0.2);
+}
+
+.password-toggle {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    color: #666;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+}
+
+.password-toggle:hover {
+    background-color: rgba(116, 2, 2, 0.1);
+    color: #740202;
+}
+
+.password-toggle:focus {
+    outline: 2px solid #740202;
+    outline-offset: 2px;
+}
+
+.eye-icon {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+    transition: fill 0.2s ease;
+}
+
+/* Mantener estilos originales para inputs normales */
+.form-container input:not(.password-input) {
+    background: #eee;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 15px;
+    margin: 6px 0;
+    width: 100%;
+    font-size: clamp(12px, 2.5vw, 14px);
+}
+
+button {
+    border-radius: 20px;
+    border: 1px solid #740202;
+    background: #740202;
+    color: #fff;
+    font-size: clamp(10px, 2vw, 12px);
+    font-weight: bold;
+    padding: 12px 30px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    cursor: pointer;
+    min-width: 120px;
+    margin: 10px 0; /* Margen controlado */
+}
+
+#lila {
+    background: #740202;
+    border: 1px solid #740202;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+button:focus {
+    outline: none;
+}
+
+button.ghost {
+    background: transparent;
+    border-color: #fff;
+}
+
+.sign-in-container {
+    left: 0;
+    z-index: 2;
+}
+
+.sign-up-container {
+    left: 0;
+    z-index: 1;
+    opacity: 0;
+}
+
+.overlay-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: transform 0.6s ease-in-out;
+    z-index: 100;
+}
+
+.overlay {
+    background: #740202;
+    background: linear-gradient(to right, #740202, #740202);
+    color: #fff;
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: transform 0.6s ease-in-out;
+}
+
+.overlay-panel {
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 30px;
+    height: 100%;
+    width: 50%;
+    text-align: center;
+    transform: translateX(0);
+    transition: transform 0.6s ease-in-out;
+}
+
+.overlay-right {
+    right: 0;
+    transform: translateX(0);
+}
+
+.overlay-left {
+    transform: translateX(-20%);
+}
+
+/* Animaciones */
+.container.right-panel-active .sign-in-container {
+    transform: translateX(100%);
+}
+
+.container.right-panel-active .overlay-container {
+    transform: translateX(-100%);
+}
+
+.container.right-panel-active .sign-up-container {
+    transform: translateX(100%);
+    opacity: 1;
+    z-index: 5;
+    animation: show 0.6s;
+}
+
+@keyframes show {
+    0%, 49.99% {
+        opacity: 0;
+        z-index: 1;
+    }
+    50%, 100% {
+        opacity: 1;
+        z-index: 5;
+    }
+}
+
+.container.right-panel-active .overlay {
+    transform: translateX(50%);
+}
+
+.container.right-panel-active .overlay-left {
+    transform: translateX(0);
+}
+
+.container.right-panel-active .overlay-right {
+    transform: translateX(20%);
+}
+
+/* ESTILOS CORREGIDOS PARA FORMULARIO DE CONTRASEÑA OLVIDADA */
+.container.forgot-password-active .sign-in-container,
+.container.forgot-password-active .sign-up-container,
+.container.forgot-password-active .overlay-container {
+    display: none;
+}
+
+.forgot-password-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 30px;
+    text-align: center;
+    border-radius: 10px;
+    z-index: 1000;
+}
+
+.container.forgot-password-active .forgot-password-container {
+    display: flex;
+}
+
+.forgot-password-overlay {
+    display: none; /* Ya no necesitamos overlay separado */
+}
+
+.forgot-password-container .social-container {
+    margin: 10px 0 20px 0;
+    height: 80px;
+}
+
+.forgot-password-container .login-icon {
+    width: 80px;
+    height: 80px;
+}
+
+.forgot-password-container h1 {
+    margin: 15px 0 10px 0;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+}
+
+.forgot-password-container p {
+    margin: 10px 0 25px 0;
+    font-size: clamp(12px, 2.5vw, 14px);
+}
+
+.forgot-password-container input[type="email"] {
+    padding: 12px 15px;
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+    background: #eee;
+    font-size: clamp(12px, 2.5vw, 14px);
+}
+
+.forgot-password-container button {
+    padding: 12px 30px;
+    background-color: #740202;
+    border: 1px solid #740202;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 100%;
+    max-width: 300px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: clamp(10px, 2vw, 12px);
+    margin: 10px 0;
+    transition: transform 80ms ease-in;
+}
+
+.forgot-password-container button:hover {
+    background-color: #660000;
+}
+
+.forgot-password-container button:active {
+    transform: scale(0.95);
+}
+
+.forgot-password-container a {
+    color: #228be6;
+    font-size: clamp(12px, 2.5vw, 14px);
+    text-decoration: none;
+    margin: 15px 0 0 0;
+    cursor: pointer;
+}
+
+.forgot-password-container a:hover {
+    text-decoration: underline;
+}
+
+#recoverMessage {
+    margin-top: 15px;
+    color: rgba(128, 11, 0, 0.847);
+    font-size: 14px;
+    max-width: 300px;
+}
+
+/* MENSAJES DE FORMULARIO MEJORADOS */
+.form-message {
+    margin: 10px 0;
+    font-size: 14px;
+    line-height: 1.4;
+    max-width: 100%;
+    text-align: center;
+    word-wrap: break-word;
+    transition: all 0.3s ease-in-out;
+}
+
+.form-message div {
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #ffe0e0;
+    color: #a00;
+}
+
+.form-message div.success {
+    background-color: #e0ffe0;
+    color: #0a0;
+}
+
+/* Media Queries para Responsive */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        min-height: 600px;
+        flex-direction: column;
+    }
+
+    .form-container {
+        position: relative;
+        width: 100%;
+        height: auto;
+        min-height: 400px;
+    }
+
+    .form-container form {
+        padding: 20px;
+        height: auto;
+        min-height: 400px;
+    }
+
+    /* Logo más pequeño en móviles */
+    .login-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .social-container {
+        height: 45px;
+        margin: 10px 0;
+    }
+
+    /* Ajustes para contraseña en móvil */
+    .password-toggle {
+        right: 10px;
+        width: 28px;
+        height: 28px;
+    }
+
+    .eye-icon {
+        width: 16px;
+        height: 16px;
+    }
+
+    .overlay-container {
+        position: relative;
+        left: 0;
+        width: 100%;
+        height: 200px;
+        order: -1;
+    }
+
+    .overlay {
+        position: relative;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transform: none;
+    }
+
+    .overlay-panel {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+    }
+
+    .overlay-left,
+    .overlay-right {
+        transform: none;
+    }
+
+    .sign-up-container {
+        opacity: 1;
+        position: relative;
+        z-index: 1;
+    }
+
+    .sign-in-container {
+        position: relative;
+        z-index: 1;
+    }
+
+    /* Ocultar paneles en móvil y mostrar botones de alternancia */
+    .container:not(.mobile-signup) .sign-up-container {
+        display: none;
+    }
+
+    .container.mobile-signup .sign-in-container {
+        display: none;
+    }
+
+    .overlay-container {
+        display: none;
+    }
+
+    /* Botones de alternancia para móvil */
+    .mobile-toggle {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.9);
+    }
+
+    .mobile-toggle button {
+        margin: 0 10px;
+        background: transparent;
+        color: #740202;
+        border: 2px solid #740202;
+    }
+
+    .mobile-toggle button.active {
+        background: #740202;
+        color: white;
+    }
+
+    /* Formulario de contraseña olvidada en móvil */
+    .forgot-password-container {
+        padding: 30px 20px;
+    }
+    
+    .forgot-password-container .social-container {
+        height: 60px;
+        margin: 15px 0;
+    }
+    
+    .forgot-password-container .login-icon {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+@media (min-width: 769px) {
+    .mobile-toggle {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        margin: 10px;
+        min-height: 500px;
+    }
+
+    .form-container form {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+
+    .form-container input {
+        padding: 10px 12px;
+        margin: 6px 0;
+    }
+
+    button {
+        padding: 10px 25px;
+        font-size: 11px;
+    }
+
+    .login-icon {
+        width: 35px;
+        height: 35px;
+    }
+
+    .social-container {
+        height: 40px;
+        margin: 8px 0;
+    }
+
+    /* Formulario de contraseña olvidada en móvil pequeño */
+    .forgot-password-container {
+        padding: 25px 15px;
+    }
+    
+    .forgot-password-container .social-container {
+        height: 50px;
+        margin: 10px 0;
+    }
+    
+    .forgot-password-container .login-icon {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .forgot-password-container input[type="email"],
+    .forgot-password-container button {
+        max-width: 280px;
+    }
+}
